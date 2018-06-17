@@ -1,0 +1,41 @@
+.nav {
+	display: flex;
+}
+
+.list-books-title {
+	padding: 10px 0;
+	background: #f44336;
+	text-align: left;
+	flex: 1;
+}
+.list-books-title h1 {
+	font-weight: 400;
+	margin: 0;
+	padding-left: 3rem;
+	color: white;
+}
+
+/* search page */
+
+.search-books {
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	display: flex;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
+	flex-basis: 25%;
+
+	& input {
+		padding: 15px 10px;
+		font-size: 1.25em;
+		border: none;
+		outline: none;
+		width: 100%;
+		color: #f44336;
+	}
+}
+.search-books-input-wrapper {
+	flex: 1;
+	background: #e9e;
+}

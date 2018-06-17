@@ -4,7 +4,10 @@ import SearchBar from './SearchBar';
 
 const NavBar = () => {
 	return (
-		<nav>
+		<nav className="nav">
+			<div className="list-books-title">
+				<h1>MyReads</h1>
+			</div>
 			<SearchBar />
 		</nav>
 	);
