@@ -4567,13 +4567,13 @@ body,
   padding: 3rem;
 }
 
-.open-search {
+.open-portal {
   position: fixed;
   right: 25px;
   bottom: 25px;
 }
 
-.open-search a {
+.open-portal a {
   display: block;
   width: 50px;
   height: 50px;
@@ -4585,24 +4585,6 @@ body,
   background-size: 28px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
   font-size: 0;
-}
-
-.close-search {
-  display: block;
-  top: 20px;
-  left: 15px;
-  width: 50px;
-  height: 53px;
-  background: white;
-  background-image: url('./assets/arrow-back.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 28px;
-  font-size: 0;
-}
-
-.search-books-results {
-  padding: 80px 10px 20px;
 }
 
 .nav {
@@ -4626,33 +4608,6 @@ body,
   margin: 0;
   padding-left: 3rem;
   color: white;
-}
-
-/* search page */
-
-.search-books {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 5;
-  display: flex;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 0 6px rgba(0, 0, 0, .23);
-  flex-basis: 25%;
-}
-
-.search-books input {
-  padding: 15px 10px;
-  font-size: 1.25em;
-  border: none;
-  outline: none;
-  width: 100%;
-  color: #f44336;
-}
-
-.search-books-input-wrapper {
-  flex: 1;
-  background: #e9e;
 }
 
 .bookshelf {
@@ -4753,6 +4708,63 @@ body,
   padding: 20px 10px 0;
   text-align: center;
   font-size: .8em;
+}
+
+/* search page */
+
+.search-books {
+  position: fixed;
+  width: 80%;
+  height: 60%;
+  background: #f44336;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 0 6px rgba(0, 0, 0, .23);
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.search-books input {
+  padding: 15px 10px;
+  background: #00bcd4;
+  font-size: 1.25em;
+  height: 10%;
+  vertical-align: middle;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  width: 100%;
+  color: #f44336;
+  transition: box-shadow .25s;
+  box-shadow: 0 0 5px #000;
+}
+
+.search-books small {
+  color: #00bcd4;
+  margin: 5px auto;
+}
+
+.search-books-input-wrapper {
+  flex: 1;
+  background: #e9e;
+}
+
+.close-search {
+  display: block;
+  top: 20px;
+  left: 15px;
+  width: 50px;
+  height: 53px;
+  background: white;
+  background-image: url('./assets/arrow-back.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  font-size: 0;
+}
+
+.search-books-results {
+  padding: 80px 10px 20px;
 }
 
 @media (min-width: 576px) {
