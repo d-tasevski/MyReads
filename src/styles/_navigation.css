@@ -1,5 +1,9 @@
 .nav {
+	position: sticky;
+	top: 0;
+	z-index: 99;
 	display: flex;
+	width: 100%;
 }
 
 .list-books-title {

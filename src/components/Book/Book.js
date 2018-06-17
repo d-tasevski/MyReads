@@ -3,6 +3,7 @@ import React from 'react';
 import BookActions from './BookActions';
 
 const Book = ({ book }) => {
+	console.log(book);
 	return (
 		<div className="book">
 			<div className="book-top">
@@ -14,7 +15,7 @@ const Book = ({ book }) => {
 						backgroundImage: `url(${book.imageLinks.thumbnail})`,
 					}}
 				/>
-				<BookActions />
+				<BookActions id={book.id} />
 			</div>
 			<div className="book-title">{book.title}</div>
 			<div className="book-authors">{book.authors.join(' ')}</div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { GridLoader } from 'react-spinners';
 
 import { fetchAllBooks } from './Redux/actions/bookActions';
 import Navigation from './components/Navigation/Navigation';
@@ -17,11 +18,18 @@ class App extends Component {
 	}
 
 	render() {
-		console.log(this.props);
+		const { bookData } = this.props;
 		return (
 			<div className="app">
 				<Navigation />
-				<Shelf books={this.props.bookData.books} />
+				{bookData.isLoading ? (
+					<div className="centered">
+						<GridLoader color="#f44336" margin="5px" size={50} />
+					</div>
+				) : (
+					<Shelf books={bookData.books} />
+				)}
+
 				<div className="open-search">
 					<a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
 				</div>

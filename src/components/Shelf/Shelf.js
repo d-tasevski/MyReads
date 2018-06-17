@@ -8,15 +8,15 @@ const Shelf = props => {
 	const shelfData = [
 		{
 			type: 'currentlyReading',
-			books: props.books.filter(book => book.shelf === 'currentlyReading'),
+			books: props.books.filter(book => book.shelf === 'currentlyReading') || [],
 		},
 		{
 			type: 'wantToRead',
-			books: props.books.filter(book => book.shelf === 'wantToRead'),
+			books: props.books.filter(book => book.shelf === 'wantToRead') || [],
 		},
 		{
 			type: 'read',
-			books: props.books.filter(book => book.shelf === 'read'),
+			books: props.books.filter(book => book.shelf === 'read') || [],
 		},
 	];
 
