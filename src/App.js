@@ -12,6 +12,7 @@ import Search from './components/Search/Search';
 class App extends Component {
 	static propTypes = {
 		fetchAllBooks: PropTypes.func.isRequired,
+		clearSearchResults: PropTypes.func.isRequired,
 		bookData: PropTypes.shape({
 			isLoading: PropTypes.bool,
 			books: PropTypes.array,
@@ -26,7 +27,8 @@ class App extends Component {
 		this.props.fetchAllBooks();
 	}
 
-	onSearchClose = () => this.setState({ isSearchVisible: false });
+	onSearchClose = () =>
+		this.setState({ isSearchVisible: false }, () => this.props.clearSearchResults());
 
 	render() {
 		const { bookData } = this.props;
@@ -61,6 +63,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	fetchAllBooks: () => dispatch(fetchAllBooks()),
+	clearSearchResults: () =>
+		dispatch({
+			type: 'CLEAR_SEARCH_RESULTS',
+		}),
 });
 
 export default connect(

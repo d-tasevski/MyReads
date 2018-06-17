@@ -21,6 +21,8 @@ export default (state = initialState, action) => {
 			return { ...state, isLoading: false, searchResults: action.payload };
 		case types.SEARCH_BOOKS_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
+		case types.CLEAR_SEARCH_RESULTS:
+			return { ...state, isLoading: false, searchResults: [] };
 		default:
 			return state;
 	}

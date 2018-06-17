@@ -2,7 +2,7 @@
 
 .search-books {
 	position: fixed;
-	width: 80%;
+	width: 50%;
 	height: 60%;
 	background: #f44336;
 	display: flex;
@@ -11,6 +11,11 @@
 	padding: 2rem;
 	border-radius: 5px;
 	overflow: auto;
+
+	@media screen and (max-width: 1100px) {
+		width: 80%;
+		height: 60%;
+	}
 
 	& input {
 		padding: 15px 20px;

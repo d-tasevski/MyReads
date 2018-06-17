@@ -10,4 +10,5 @@ export default keyMirror({
 
 	SEARCH_BOOKS_SUCCESS: null,
 	SEARCH_BOOKS_FAILURE: null,
+	CLEAR_SEARCH_RESULTS: null,
 });

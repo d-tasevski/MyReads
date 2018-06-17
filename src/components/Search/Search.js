@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { GridLoader } from 'react-spinners';
 
 import Book from '../Book/Book';
 import { searchBooks } from '../../Redux/actions/bookActions';
@@ -11,7 +12,7 @@ class Search extends React.Component {
 	static propTypes = {
 		searchBooks: PropTypes.func.isRequired,
 		closeCallback: PropTypes.func.isRequired,
-		books: PropTypes.array,
+		books: PropTypes.shape({}),
 	};
 
 	state = {
@@ -31,7 +32,6 @@ class Search extends React.Component {
 	};
 
 	render() {
-		console.log(this.props);
 		return (
 			<div className="search-books centered">
 				<div onClick={this.props.closeCallback}>
@@ -65,10 +65,16 @@ class Search extends React.Component {
 				{this.props.books.searchResults.length > 0 && <h3>Results:</h3>}
 
 				<div className="search-resultBox">
-					{this.props.books.searchResults.length > 0 &&
+					{this.props.books.isLoading ? (
+						<div className="centered">
+							<GridLoader color="#00bcd4" margin="5px" size={50} />
+						</div>
+					) : (
+						this.props.books.searchResults.length > 0 &&
 						this.props.books.searchResults.map(book => (
 							<Book key={book.id} book={book} search />
-						))}
+						))
+					)}
 					{this.props.books.searchResults.error === 'empty query' && (
 						<p>{`That search gave no results :(
 							Try again with something else. `}</p>

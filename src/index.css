@@ -4718,7 +4718,7 @@ a {
 
 .search-books {
   position: fixed;
-  width: 80%;
+  width: 50%;
   height: 60%;
   background: #f44336;
   display: flex;
@@ -4727,6 +4727,13 @@ a {
   padding: 2rem;
   border-radius: 5px;
   overflow: auto;
+}
+
+@media screen and (max-width: 1100px) {
+  .search-books {
+    width: 80%;
+    height: 60%;
+  }
 }
 
 .search-books input {

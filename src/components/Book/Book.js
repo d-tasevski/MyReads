@@ -12,15 +12,19 @@ const Book = ({ book, search }) => {
 					style={{
 						width: 128,
 						height: 174,
-						backgroundImage: search
-							? `url(${book.imageLinks.smallThumbnail})`
-							: `url(${book.imageLinks.thumbnail})`,
+						backgroundImage: book.imageLinks
+							? search
+								? `url(${book.imageLinks.smallThumbnail})`
+								: `url(${book.imageLinks.thumbnail})`
+							: 'url(../../assets/placeholder.png)',
 					}}
 				/>
 				<BookActions id={book.id} />
 			</div>
 			<div className="book-title">{book.title}</div>
-			<div className="book-authors">{book.authors.join(' ')}</div>
+			<div className="book-authors">
+				{book.authors ? book.authors.join(' ') : 'Unknown Author'}
+			</div>
 		</div>
 	);
 };
