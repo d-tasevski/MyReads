@@ -4644,6 +4644,7 @@ body,
 
 .bookshelf {
   padding: 0 10px 20px;
+  min-height: 380px;
 }
 
 @media (min-width: 600px) {
@@ -4679,7 +4680,7 @@ body,
 }
 
 .book {
-  width: 140px;
+  width: 150px;
 }
 
 .book-title,
@@ -4705,12 +4706,12 @@ body,
 
 .book-shelf-changer {
   position: absolute;
-  right: 0;
+  right: 10px;
   bottom: -10px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: #00bcd4;
   background-image: url('./assets/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
