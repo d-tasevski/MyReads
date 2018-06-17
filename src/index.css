@@ -4671,6 +4671,10 @@ a {
   padding: 10px;
 }
 
+.book-shelf-changer select option {
+  text-transform: capitalize;
+}
+
 .book {
   width: 150px;
   display: flex;

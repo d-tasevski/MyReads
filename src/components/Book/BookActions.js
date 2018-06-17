@@ -8,10 +8,10 @@ class BookActions extends React.Component {
 	static propTypes = {
 		updateBook: PropTypes.func.isRequired,
 		id: PropTypes.string.isRequired,
+		shelf: PropTypes.string,
 	};
 
 	onChange = e => {
-		console.log(e.target);
 		const { value } = e.target;
 		const { id, updateBook } = this.props;
 
@@ -19,9 +19,10 @@ class BookActions extends React.Component {
 	};
 
 	render() {
+		const options = ['currentlyReading', 'wantToRead', 'read', 'none'];
 		return (
 			<div className="book-shelf-changer">
-				<select onChange={this.onChange}>
+				<select onChange={this.onChange} selected={this.props.shelf}>
 					<option value="move" disabled style={{ borderBottom: '1px solid ##2e7d32' }}>
 						Move to...
 					</option>
@@ -29,10 +30,11 @@ class BookActions extends React.Component {
 						{/* NOTE: the onChange handle didn't worked on the first option until I've added this hidden one. Investigate.*/}
 						Currently Reading
 					</option>
-					<option value="currentlyReading">Currently Reading</option>
-					<option value="wantToRead">Want to Read</option>
-					<option value="read">Read</option>
-					<option value="none">Remove</option>
+					{options.map(option => (
+						<option key={option} value={option} selected={option === this.props.shelf}>
+							{option.replace(/([a-z](?=[A-Z]))/g, '$1 ')}
+						</option>
+					))}
 				</select>
 			</div>
 		);
