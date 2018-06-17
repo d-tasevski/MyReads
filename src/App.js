@@ -21,11 +21,7 @@ class App extends Component {
 		return (
 			<div className="app">
 				<Navigation />
-				<div className="list-books">
-					<div className="list-books-content">
-						<Shelf books={this.props.bookData.books} />
-					</div>
-				</div>
+				<Shelf books={this.props.bookData.books} />
 				<div className="open-search">
 					<a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
 				</div>

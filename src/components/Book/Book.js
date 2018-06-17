@@ -1,5 +1,7 @@
 import React from 'react';
 
+import BookActions from './BookActions';
+
 const Book = ({ book }) => {
 	return (
 		<div className="book">
@@ -12,6 +14,7 @@ const Book = ({ book }) => {
 						backgroundImage: `url(${book.imageLinks.thumbnail})`,
 					}}
 				/>
+				<BookActions />
 			</div>
 			<div className="book-title">{book.title}</div>
 			<div className="book-authors">{book.authors.join(' ')}</div>

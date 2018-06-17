@@ -9,7 +9,9 @@
 }
 
 .bookshelf-title {
-	border-bottom: 1px solid #dedede;
+	color: #f44336;
+	font-weight: 400;
+	border-bottom: 1px solid #f44336;
 }
 .bookshelf-books {
 	text-align: center;
@@ -39,6 +41,7 @@
 	font-size: 0.8em;
 }
 .book-title {
+	color: #fff;
 	margin-top: 10px;
 }
 .book-authors {
@@ -78,6 +81,7 @@
 .book-cover {
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 	background: #eee;
+	position: relative;
 }
 .book-cover-title {
 	padding: 20px 10px 0;

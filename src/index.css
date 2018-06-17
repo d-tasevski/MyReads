@@ -4555,9 +4555,8 @@ body,
 
 /* main page */
 
-.list-books-content {
-  padding: 0 0 80px;
-  flex: 1;
+.list-books {
+  padding: 3rem;
 }
 
 .open-search {
@@ -4654,7 +4653,9 @@ body,
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
+  color: #f44336;
+  font-weight: 400;
+  border-bottom: 1px solid #f44336;
 }
 
 .bookshelf-books {
@@ -4687,6 +4688,7 @@ body,
 }
 
 .book-title {
+  color: #fff;
   margin-top: 10px;
 }
 
@@ -4728,6 +4730,7 @@ body,
 .book-cover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
   background: #eee;
+  position: relative;
 }
 
 .book-cover-title {
