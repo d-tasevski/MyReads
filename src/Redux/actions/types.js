@@ -7,4 +7,7 @@ export default keyMirror({
 
 	UPDATE_BOOKS_SUCCESS: null,
 	UPDATE_BOOKS_FAILURE: null,
+
+	SEARCH_BOOKS_SUCCESS: null,
+	SEARCH_BOOKS_FAILURE: null,
 });

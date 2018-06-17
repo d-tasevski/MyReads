@@ -4548,9 +4548,9 @@ body {
   line-height: 1.5;
 }
 
-body,
-.app {
-  background: color-mod(black alpha(10%));
+a {
+  text-decoration: none;
+  color: color-mod(white alpha(10%));
 }
 
 .centered {
@@ -4650,7 +4650,7 @@ body,
 
 .book-shelf-changer {
   position: absolute;
-  right: 10px;
+  right: 0;
   bottom: -10px;
   width: 30px;
   height: 30px;
@@ -4673,6 +4673,10 @@ body,
 
 .book {
   width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .book-title,
@@ -4722,10 +4726,11 @@ body,
   box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 0 6px rgba(0, 0, 0, .23);
   padding: 2rem;
   border-radius: 5px;
+  overflow: auto;
 }
 
 .search-books input {
-  padding: 15px 10px;
+  padding: 15px 20px;
   background: #00bcd4;
   font-size: 1.25em;
   height: 10%;
@@ -4737,11 +4742,35 @@ body,
   color: #f44336;
   transition: box-shadow .25s;
   box-shadow: 0 0 5px #000;
+  /*background: #00bcd4 url('./assets/search.svg') no-repeat scroll 7px 7px; */
+  background-position: right 10px bottom 50%;
+  fill: #000;
+  position: relative;
 }
 
 .search-books small {
   color: #00bcd4;
   margin: 5px auto;
+}
+
+.search-books h3 {
+  margin: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+.searchIco {
+  position: absolute;
+  top: 2.3rem;
+  right: 2rem;
+}
+
+.closeIco {
+  position: absolute;
+  top: 3px;
+  right: 3px;
 }
 
 .search-books-input-wrapper {
@@ -4763,8 +4792,28 @@ body,
   font-size: 0;
 }
 
-.search-books-results {
-  padding: 80px 10px 20px;
+.search-resultBox {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  text-align: center;
+  justify-content: center;
+  padding-right: 17px;
+}
+
+::-webkit-scrollbar {
+  width: 0; /* remove scrollbar space */
+  background: transparent; /* optional: just make scrollbar invisible */
+}
+
+/* optional: show position indicator in red */
+
+::-webkit-scrollbar-thumb {
+  background: #f00;
 }
 
 @media (min-width: 576px) {

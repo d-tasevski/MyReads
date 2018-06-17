@@ -10,9 +10,10 @@
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
 	padding: 2rem;
 	border-radius: 5px;
+	overflow: auto;
 
 	& input {
-		padding: 15px 10px;
+		padding: 15px 20px;
 		background: #00bcd4;
 		font-size: 1.25em;
 		height: 10%;
@@ -24,13 +25,38 @@
 		color: #f44336;
 		transition: box-shadow 0.25s;
 		box-shadow: 0px 0px 5px #000;
+		/* background: #00bcd4 url('./assets/search.svg') no-repeat scroll 7px 7px; */
+		background-position: right 10px bottom 50%;
+		fill: #000;
+		position: relative;
 	}
 
 	& small {
 		color: #00bcd4;
 		margin: 5px auto;
 	}
+
+	& h3 {
+		margin: 10px;
+		width: 100%;
+		text-align: center;
+		font-weight: 400;
+		vertical-align: middle;
+	}
 }
+
+.searchIco {
+	position: absolute;
+	top: 2.3rem;
+	right: 2rem;
+}
+
+.closeIco {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+}
+
 .search-books-input-wrapper {
 	flex: 1;
 	background: #e9e;
@@ -50,6 +76,24 @@
 	font-size: 0;
 }
 
-.search-books-results {
-	padding: 80px 10px 20px;
+.search-resultBox {
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1.5rem;
+	text-align: center;
+	justify-content: center;
+	padding-right: 17px;
+}
+
+::-webkit-scrollbar {
+	width: 0px; /* remove scrollbar space */
+	background: transparent; /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+	background: #ff0000;
 }

@@ -12,7 +12,10 @@ import Search from './components/Search/Search';
 class App extends Component {
 	static propTypes = {
 		fetchAllBooks: PropTypes.func.isRequired,
-		bookData: PropTypes.array,
+		bookData: PropTypes.shape({
+			isLoading: PropTypes.bool,
+			books: PropTypes.array,
+		}),
 	};
 
 	state = {
@@ -23,6 +26,8 @@ class App extends Component {
 		this.props.fetchAllBooks();
 	}
 
+	onSearchClose = () => this.setState({ isSearchVisible: false });
+
 	render() {
 		const { bookData } = this.props;
 
@@ -30,11 +35,11 @@ class App extends Component {
 			<div className="app">
 				{this.state.isSearchVisible && (
 					<Portal>
-						<Search />
+						<Search closeCallback={this.onSearchClose} />
 					</Portal>
 				)}
 				<Navigation />
-				{bookData.isLoading ? (
+				{bookData.isLoading && !this.state.isSearchVisible ? (
 					<div className="centered">
 						<GridLoader color="#f44336" margin="5px" size={50} />
 					</div>

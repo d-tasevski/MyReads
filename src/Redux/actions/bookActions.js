@@ -35,3 +35,23 @@ export const updateBook = (book, shelf) => dispatch => {
 			})
 		);
 };
+
+export const searchBooks = query => dispatch => {
+	dispatch({
+		type: types.FETCH_IN_PROGRESS,
+	});
+
+	return search(query)
+		.then(res =>
+			dispatch({
+				type: types.SEARCH_BOOKS_SUCCESS,
+				payload: res,
+			})
+		)
+		.catch(err =>
+			dispatch({
+				type: types.SEARCH_BOOKS_FAILURE,
+				payload: err,
+			})
+		);
+};

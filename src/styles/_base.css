@@ -9,9 +9,9 @@ body {
 	line-height: 1.5;
 }
 
-body,
-.app {
-	background: color-mod(black alpha(10%));
+a {
+	text-decoration: none;
+	color: color-mod(white alpha(10%));
 }
 
 .centered {
