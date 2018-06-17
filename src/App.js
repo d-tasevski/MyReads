@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { fetchAllBooks } from './Redux/actions/bookActions';
@@ -6,6 +7,11 @@ import Navigation from './components/Navigation/Navigation';
 import Shelf from './components/Shelf/Shelf';
 
 class App extends Component {
+	static propTypes = {
+		fetchAllBooks: PropTypes.func.isRequired,
+		books: PropTypes.array,
+	};
+
 	componentDidMount() {
 		this.props.fetchAllBooks();
 	}
@@ -17,7 +23,7 @@ class App extends Component {
 				<Navigation />
 				<div className="list-books">
 					<div className="list-books-content">
-						<Shelf />
+						<Shelf books={this.props.bookData.books} />
 					</div>
 				</div>
 				<div className="open-search">
@@ -29,7 +35,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-	books: state.books,
+	bookData: state.books,
 });
 
 const mapDispatchToProps = dispatch => ({
