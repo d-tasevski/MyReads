@@ -23,18 +23,10 @@ class Search extends React.Component {
 
 	onChange = e => this.props.searchBooks(e.target.value.trim());
 
-	onSearch = () => this.props.searchBooks(this.state.searchVal);
-
-	onKeyPress = e => {
-		if (e.key === 'Enter') {
-			this.props.searchBooks(this.state.searchVal);
-		}
-	};
-
 	render() {
 		return (
 			<div className="search-books centered">
-				<Link to="/">
+				<Link to="/" onClick={this.props.clearSearchResults}>
 					<CloseIcon size={25} styles="closeIco" />
 				</Link>
 				<div>
@@ -43,22 +35,18 @@ class Search extends React.Component {
 						placeholder="Search by title or author"
 						onChange={e => throttle(this.onChange(e), 200)}
 					/>
-					<div onClick={this.onSearch}>
-						<SearchIcon size={45} styles="searchIco" />
-					</div>
+					<SearchIcon size={45} styles="searchIco" />
 				</div>
-				{!this.state.searchVal ? (
-					<small>
-						Search by title or author. All search terms can be found{' '}
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md"
-						>
-							here.
-						</a>
-					</small>
-				) : null}
+				<small>
+					Search by title or author. All search terms can be found{' '}
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md"
+					>
+						here.
+					</a>
+				</small>
 
 				{this.props.books.searchResults &&
 					this.props.books.searchResults.length > 0 && <h3>Results:</h3>}
@@ -88,6 +76,10 @@ class Search extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
 	searchBooks: query => dispatch(searchBooks(query)),
+	clearSearchResults: () =>
+		dispatch({
+			type: 'CLEAR_SEARCH_RESULTS',
+		}),
 });
 
 const mapStateToProps = state => ({

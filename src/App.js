@@ -6,8 +6,6 @@ import { GridLoader } from 'react-spinners';
 import { fetchAllBooks } from './Redux/actions/bookActions';
 import Navigation from './components/Navigation/Navigation';
 import Shelf from './components/Shelf/Shelf';
-import Portal from './components/Portal/Portal';
-import Search from './components/Search/Search';
 
 class App extends Component {
 	static propTypes = {
@@ -27,6 +25,7 @@ class App extends Component {
 		this.props.fetchAllBooks();
 	}
 
+	// Keep for reference
 	onSearchClose = () =>
 		this.setState({ isSearchVisible: false }, () => this.props.clearSearchResults());
 
@@ -59,10 +58,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	fetchAllBooks: () => dispatch(fetchAllBooks()),
-	clearSearchResults: () =>
-		dispatch({
-			type: 'CLEAR_SEARCH_RESULTS',
-		}),
 });
 
 export default connect(
