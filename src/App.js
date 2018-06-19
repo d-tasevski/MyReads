@@ -35,23 +35,19 @@ class App extends Component {
 
 		return (
 			<div className="app">
-				{this.state.isSearchVisible && (
+				{/* {this.state.isSearchVisible && (
 					<Portal>
 						<Search closeCallback={this.onSearchClose} />
 					</Portal>
-				)}
+				)} */}
 				<Navigation />
-				{bookData.isLoading && !this.state.isSearchVisible ? (
+				{bookData.isLoading ? (
 					<div className="centered">
 						<GridLoader color="#f44336" margin="5px" size={50} />
 					</div>
 				) : (
 					<Shelf books={bookData.books} />
 				)}
-
-				<div className="open-portal">
-					<a onClick={() => this.setState({ isSearchVisible: true })}>Add a book</a>
-				</div>
 			</div>
 		);
 	}

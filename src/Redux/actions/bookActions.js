@@ -38,7 +38,7 @@ export const updateBook = (book, shelf) => dispatch => {
 
 export const searchBooks = query => dispatch => {
 	dispatch({
-		type: types.FETCH_IN_PROGRESS,
+		type: types.SEARCH_IN_PROGRESS,
 	});
 
 	return search(query)

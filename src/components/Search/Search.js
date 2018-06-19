@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { GridLoader } from 'react-spinners';
 
+import { throttle } from '../../helpers';
 import Book from '../Book/Book';
 import { searchBooks } from '../../Redux/actions/bookActions';
 import { SearchIcon } from '../../assets/SearchIcon';
@@ -19,9 +21,7 @@ class Search extends React.Component {
 		searchVal: '',
 	};
 
-	onChange = e => {
-		this.setState({ searchVal: e.target.value });
-	};
+	onChange = e => this.props.searchBooks(e.target.value.trim());
 
 	onSearch = () => this.props.searchBooks(this.state.searchVal);
 
@@ -34,16 +34,14 @@ class Search extends React.Component {
 	render() {
 		return (
 			<div className="search-books centered">
-				<div onClick={this.props.closeCallback}>
+				<Link to="/">
 					<CloseIcon size={25} styles="closeIco" />
-				</div>
+				</Link>
 				<div>
 					<input
 						type="text"
-						value={this.state.searchVal}
 						placeholder="Search by title or author"
-						onChange={this.onChange}
-						onKeyPress={this.onKeyPress}
+						onChange={e => throttle(this.onChange(e), 200)}
 					/>
 					<div onClick={this.onSearch}>
 						<SearchIcon size={45} styles="searchIco" />
@@ -62,23 +60,26 @@ class Search extends React.Component {
 					</small>
 				) : null}
 
-				{this.props.books.searchResults.length > 0 && <h3>Results:</h3>}
+				{this.props.books.searchResults &&
+					this.props.books.searchResults.length > 0 && <h3>Results:</h3>}
 
 				<div className="search-resultBox">
-					{this.props.books.isLoading ? (
+					{this.props.books.searchIsLoading ? (
 						<div className="centered">
 							<GridLoader color="#00bcd4" margin="5px" size={50} />
 						</div>
 					) : (
+						this.props.books.searchResults &&
 						this.props.books.searchResults.length > 0 &&
 						this.props.books.searchResults.map(book => (
 							<Book key={book.id} book={book} search />
 						))
 					)}
-					{this.props.books.searchResults.error === 'empty query' && (
-						<p>{`That search gave no results :(
+					{this.props.books.searchResults &&
+						this.props.books.searchResults.error === 'empty query' && (
+							<p>{`That search gave no results :(
 							Try again with something else. `}</p>
-					)}
+						)}
 				</div>
 			</div>
 		);

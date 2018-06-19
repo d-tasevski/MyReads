@@ -11,6 +11,8 @@ export default (state = initialState, action) => {
 	switch (action.type) {
 		case types.FETCH_IN_PROGRESS:
 			return { ...state, isLoading: true };
+		case types.SEARCH_IN_PROGRESS:
+			return { ...state, searchIsLoading: true };
 		case types.FETCH_ALL_BOOKS_SUCCESS:
 			return { ...state, isLoading: false, books: action.payload };
 		case types.FETCH_ALL_BOOKS_FAILURE:
@@ -18,11 +20,11 @@ export default (state = initialState, action) => {
 		case types.UPDATE_BOOKS_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
 		case types.SEARCH_BOOKS_SUCCESS:
-			return { ...state, isLoading: false, searchResults: action.payload };
+			return { ...state, searchIsLoading: false, searchResults: action.payload };
 		case types.SEARCH_BOOKS_FAILURE:
-			return { ...state, isLoading: false, error: action.payload };
+			return { ...state, searchIsLoading: false, error: action.payload };
 		case types.CLEAR_SEARCH_RESULTS:
-			return { ...state, isLoading: false, searchResults: [] };
+			return { ...state, searchIsLoading: false, searchResults: [] };
 		default:
 			return state;
 	}
