@@ -6,7 +6,7 @@ In the MyReads, you have a bookshelves that allows you to select and categorize 
 
 ## Getting Started
 
-You can checkout application online at [My Reads](Thttps://limitless-savannah-15653.herokuapp.com/), or you can run application locally via command line with `npm run start` or `yarn run start` commands.
+You can checkout application online at [My Reads](https://limitless-savannah-15653.herokuapp.com/), or you can run application locally via command line with `npm run start` or `yarn run start` commands.
 
 ### Prerequisites
 
