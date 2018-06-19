@@ -9,6 +9,8 @@ class BookActions extends React.Component {
 		updateBook: PropTypes.func.isRequired,
 		id: PropTypes.string.isRequired,
 		shelf: PropTypes.string,
+		selectedBooks: PropTypes.array,
+		search: PropTypes.bool,
 	};
 
 	onChange = e => {
@@ -19,6 +21,22 @@ class BookActions extends React.Component {
 	};
 
 	render() {
+		const selectedBooksIds = this.props.selectedBooks.map(book => book.id);
+		const findShelf = id =>
+			this.props.selectedBooks.filter(book => {
+				if (id === book.id) {
+					return book;
+				}
+			})[0].shelf;
+
+		const handleOptionsSelect = (bookId, option) => {
+			if (this.props.search && selectedBooksIds.includes(bookId)) {
+				return option === findShelf(bookId);
+			} else {
+				return option === this.props.shelf;
+			}
+		};
+
 		const options = ['currentlyReading', 'wantToRead', 'read', 'none'];
 		return (
 			<div className="book-shelf-changer">
@@ -30,8 +48,13 @@ class BookActions extends React.Component {
 						{/* NOTE: the onChange handle didn't worked on the first option until I've added this hidden one. Investigate.*/}
 						Currently Reading
 					</option>
+
 					{options.map(option => (
-						<option key={option} value={option}>
+						<option
+							key={option}
+							value={option}
+							selected={handleOptionsSelect(this.props.id, option)}
+						>
 							{option.replace(/([a-z](?=[A-Z]))/g, '$1 ')}
 						</option>
 					))}
@@ -45,7 +68,13 @@ const mapDispatchToProps = dispatch => ({
 	updateBook: (bookId, shelf) => dispatch(updateBook(bookId, shelf)),
 });
 
+const mapStateToProps = (state, ownProps) => ({
+	selectedBooks: state.books.books,
+});
+
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
 )(BookActions);
+
+// check by id, if matches chec on what shelf is stored book

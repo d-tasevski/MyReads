@@ -10,7 +10,6 @@ import Shelf from './components/Shelf/Shelf';
 class App extends Component {
 	static propTypes = {
 		fetchAllBooks: PropTypes.func.isRequired,
-		clearSearchResults: PropTypes.func.isRequired,
 		bookData: PropTypes.shape({
 			isLoading: PropTypes.bool,
 			books: PropTypes.array,

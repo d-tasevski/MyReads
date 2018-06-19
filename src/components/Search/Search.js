@@ -13,8 +13,11 @@ import { CloseIcon } from '../../assets/CloseIcon';
 class Search extends React.Component {
 	static propTypes = {
 		searchBooks: PropTypes.func.isRequired,
-		closeCallback: PropTypes.func.isRequired,
-		books: PropTypes.shape({}),
+		clearSearchResults: PropTypes.func.isRequired,
+		books: PropTypes.shape({
+			searchResults: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+			searchIsLoading: PropTypes.bool,
+		}),
 	};
 
 	state = {

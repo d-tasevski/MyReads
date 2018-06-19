@@ -12,13 +12,10 @@ class AppRouter extends Component {
 		isSearchVisible: false,
 	};
 
-	onSearchClose = () =>
-		this.setState({ isSearchVisible: false }, () => this.props.clearSearchResults());
-
 	render() {
 		const PortalWithSearch = () => (
 			<Portal>
-				<Search closeCallback={this.onSearchClose} />
+				<Search />
 			</Portal>
 		);
 
@@ -27,7 +24,7 @@ class AppRouter extends Component {
 				<React.Fragment>
 					<App />
 					<Switch>
-						<Route path="/search" component={Search} />
+						<Route path="/search" component={PortalWithSearch} />
 						<Route path="/info" component={PortalWithInfo} />
 					</Switch>
 					<div className="open-portal">

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import BookActions from './BookActions';
 
 const Book = ({ book, search }) => {
-	console.log(book);
 	return (
 		<div className="book">
 			<div className="book-top">
@@ -20,7 +19,7 @@ const Book = ({ book, search }) => {
 							: 'url(../../assets/placeholder.png)',
 					}}
 				/>
-				<BookActions id={book.id} shelf={book.shelf} />
+				<BookActions id={book.id} shelf={book.shelf} search={search} />
 			</div>
 			<div className="book-title">{book.title}</div>
 			<div className="book-authors">

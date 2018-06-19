@@ -20,7 +20,7 @@
 	},
 	"scripts": {
 		"build:css": "postcss src/styles/index.css -o src/index.css",
-		"watch:css": "npm run build:css && postcss src/styles/*.css -o src/index.css -w",
+		"watch:css": " postcss src/styles/*.css -o src/index.css -w",
 		"start-js": "react-scripts start",
 		"start": "npm-run-all -p watch:css start-js",
 		"build-js": "react-scripts build",
