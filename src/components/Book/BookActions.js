@@ -31,7 +31,7 @@ class BookActions extends React.Component {
 						Currently Reading
 					</option>
 					{options.map(option => (
-						<option key={option} value={option} selected={option === this.props.shelf}>
+						<option key={option} value={option}>
 							{option.replace(/([a-z](?=[A-Z]))/g, '$1 ')}
 						</option>
 					))}
