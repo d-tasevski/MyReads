@@ -25,8 +25,8 @@ class App extends Component {
 	}
 
 	// Keep for reference
-	onSearchClose = () =>
-		this.setState({ isSearchVisible: false }, () => this.props.clearSearchResults());
+	// onSearchClose = () =>
+	// 	this.setState({ isSearchVisible: false }, () => this.props.clearSearchResults());
 
 	render() {
 		const { bookData } = this.props;

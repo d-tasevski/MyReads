@@ -15,7 +15,7 @@ class Search extends React.Component {
 		searchBooks: PropTypes.func.isRequired,
 		clearSearchResults: PropTypes.func.isRequired,
 		books: PropTypes.shape({
-			searchResults: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+			searchResults: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 			searchIsLoading: PropTypes.bool,
 		}),
 	};

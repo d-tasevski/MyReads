@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { updateBook } from '../../Redux/actions/bookActions';
+import { updateShelf } from '../../Redux/actions/bookActions';
 
 class BookActions extends React.Component {
 	static propTypes = {
-		updateBook: PropTypes.func.isRequired,
-		id: PropTypes.string.isRequired,
+		updateShelf: PropTypes.func.isRequired,
+		book: PropTypes.shape({
+			id: PropTypes.string.isRequired,
+		}),
 		shelf: PropTypes.string,
 		selectedBooks: PropTypes.array,
 		search: PropTypes.bool,
@@ -15,9 +17,11 @@ class BookActions extends React.Component {
 
 	onChange = e => {
 		const { value } = e.target;
-		const { id, updateBook } = this.props;
+		const updatedBook = { ...this.props.book };
+		updatedBook.shelf = value;
+		const { updateShelf } = this.props;
 
-		return updateBook(id, value);
+		updateShelf(updatedBook, value);
 	};
 
 	render() {
@@ -53,7 +57,7 @@ class BookActions extends React.Component {
 						<option
 							key={option}
 							value={option}
-							selected={handleOptionsSelect(this.props.id, option)}
+							selected={handleOptionsSelect(this.props.book.id, option)}
 						>
 							{option.replace(/([a-z](?=[A-Z]))/g, '$1 ')}
 						</option>
@@ -65,10 +69,10 @@ class BookActions extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-	updateBook: (bookId, shelf) => dispatch(updateBook(bookId, shelf)),
+	updateShelf: (book, shelf) => dispatch(updateShelf(book, shelf)),
 });
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
 	selectedBooks: state.books.books,
 });
 

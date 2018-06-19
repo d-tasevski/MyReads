@@ -22,12 +22,10 @@ export const fetchAllBooks = () => dispatch => {
 };
 
 export const updateBook = (book, shelf) => dispatch => {
-	dispatch({
-		type: types.FETCH_IN_PROGRESS,
-	});
-
 	return update(book, shelf)
-		.then(book => dispatch(fetchAllBooks()))
+		.then(book => {
+			// Do nothing
+		})
 		.catch(err =>
 			dispatch({
 				type: types.UPDATE_BOOKS_FAILURE,
@@ -54,4 +52,13 @@ export const searchBooks = query => dispatch => {
 				payload: err,
 			})
 		);
+};
+
+export const updateShelf = (book, shelf) => dispatch => {
+	dispatch(updateBook(book.id, shelf));
+
+	dispatch({
+		type: types.UPDATE_BOOK_SHELF,
+		payload: book,
+	});
 };

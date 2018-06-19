@@ -19,7 +19,7 @@ const Book = ({ book, search }) => {
 							: 'url(../../assets/placeholder.png)',
 					}}
 				/>
-				<BookActions id={book.id} shelf={book.shelf} search={search} />
+				<BookActions book={book} shelf={book.shelf} search={search} />
 			</div>
 			<div className="book-title">{book.title}</div>
 			<div className="book-authors">

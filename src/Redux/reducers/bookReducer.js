@@ -19,6 +19,14 @@ export default (state = initialState, action) => {
 			return { ...state, isLoading: false, error: action.payload };
 		case types.UPDATE_BOOKS_FAILURE:
 			return { ...state, isLoading: false, error: action.payload };
+		case types.UPDATE_BOOK_SHELF: {
+			const updatedBooks = state.books.filter(book => book.id !== action.payload.id);
+			return {
+				...state,
+				isLoading: false,
+				books: [...updatedBooks, action.payload],
+			};
+		}
 		case types.SEARCH_BOOKS_SUCCESS:
 			return { ...state, searchIsLoading: false, searchResults: action.payload };
 		case types.SEARCH_BOOKS_FAILURE:
