@@ -24,7 +24,7 @@ export const fetchAllBooks = () => dispatch => {
 export const updateBook = (book, shelf) => dispatch => {
 	return update(book, shelf)
 		.then(book => {
-			// Do nothing
+			// Do nothing here
 		})
 		.catch(err =>
 			dispatch({
@@ -40,12 +40,18 @@ export const searchBooks = query => dispatch => {
 	});
 
 	return search(query)
-		.then(res =>
+		.then(res => {
+			if (res) {
+				return dispatch({
+					type: types.SEARCH_BOOKS_SUCCESS,
+					payload: res,
+				});
+			}
 			dispatch({
-				type: types.SEARCH_BOOKS_SUCCESS,
-				payload: res,
-			})
-		)
+				type: types.SEARCH_BOOKS_FAILURE,
+				payload: "Your search didn't gave results",
+			});
+		})
 		.catch(err =>
 			dispatch({
 				type: types.SEARCH_BOOKS_FAILURE,

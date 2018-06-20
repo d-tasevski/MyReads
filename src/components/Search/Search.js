@@ -17,6 +17,7 @@ class Search extends React.Component {
 		books: PropTypes.shape({
 			searchResults: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 			searchIsLoading: PropTypes.bool,
+			error: PropTypes.string,
 		}),
 	};
 
@@ -24,7 +25,10 @@ class Search extends React.Component {
 		searchVal: '',
 	};
 
-	onChange = e => this.props.searchBooks(e.target.value.trim());
+	onChange = e => {
+		const query = e.target.value.trim();
+		this.setState({ searchVal: query }, () => this.props.searchBooks(this.state.searchVal));
+	};
 
 	render() {
 		return (
@@ -36,6 +40,7 @@ class Search extends React.Component {
 					<input
 						type="text"
 						placeholder="Search by title or author"
+						value={this.state.searchVal}
 						onChange={e => throttle(this.onChange(e), 200)}
 					/>
 					<SearchIcon size={45} styles="searchIco" />
@@ -67,7 +72,7 @@ class Search extends React.Component {
 						))
 					)}
 					{this.props.books.searchResults &&
-						this.props.books.searchResults.error === 'empty query' && (
+						this.props.books.error && (
 							<p>{`That search gave no results :(
 							Try again with something else. `}</p>
 						)}

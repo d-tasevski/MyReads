@@ -36,15 +36,17 @@ class BookActions extends React.Component {
 		const handleOptionsSelect = (bookId, option) => {
 			if (this.props.search && selectedBooksIds.includes(bookId)) {
 				return option === findShelf(bookId);
-			} else {
+			} else if (this.props.shelf) {
 				return option === this.props.shelf;
+			} else {
+				return option === 'none';
 			}
 		};
 
 		const options = ['currentlyReading', 'wantToRead', 'read', 'none'];
 		return (
 			<div className="book-shelf-changer">
-				<select onChange={this.onChange} selected={this.props.shelf}>
+				<select onChange={this.onChange}>
 					<option value="move" disabled style={{ borderBottom: '1px solid ##2e7d32' }}>
 						Move to...
 					</option>

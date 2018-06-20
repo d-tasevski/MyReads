@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
 		case types.SEARCH_BOOKS_SUCCESS:
 			return { ...state, searchIsLoading: false, searchResults: action.payload };
 		case types.SEARCH_BOOKS_FAILURE:
-			return { ...state, searchIsLoading: false, error: action.payload };
+			return { ...state, searchIsLoading: false, searchResults: [], error: action.payload };
 		case types.CLEAR_SEARCH_RESULTS:
 			return { ...state, searchIsLoading: false, searchResults: [] };
 		default:
